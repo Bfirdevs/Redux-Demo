@@ -19,10 +19,21 @@ function buyIceCream(){
 
 // (previousState, action) ==> newState
 // aplication state should be stored as an object
+/*
 const initialState = {
     numOfCakes: 10,
     numOfIceCream: 20
 }
+*/
+
+const initialIceCreamState = {
+    numOfIceCream: 20
+}
+
+const initialCakeState = {
+    numOfCakes: 10
+}
+/*
  const reducer = (state = initialState, action)=>{
      switch(action.type) {
         case BUY_CAKE:
@@ -39,6 +50,28 @@ const initialState = {
     default : return state
      }
  }
+ */
+ const cakeReducer = (state = initialCakeState, action)=>{
+    switch(action.type) {
+       case BUY_CAKE:
+            return {
+                ...state, // make a copy of state object and the update the value on the next line
+                numOfCakes: state.numOfCakes - 1 
+           }
+   default : return state
+    }
+}
+
+const iceCreamReducer = (state = initialIceCreamState, action)=>{
+    switch(action.type) {
+       case BUY_ICECREAM:
+           return {
+               ...state, // make a copy of state object and the update the value on the next line
+               numOfIceCream: state.numOfIceCream - 1 
+           }
+   default : return state
+    }
+}
 
  const store = createStore(reducer)
  console.log('initialState', store.getState())
