@@ -2,7 +2,7 @@ const redux = require('redux')
 const createStore = redux.createStore
 const applyMiddleware = redux.applyMiddleware
 const thunkMiddleware = require('redux-thunk').default
-const axios = require ('axios')
+const axios = require('axios')
 
 const initialState  = {
     loading: false,
@@ -57,7 +57,7 @@ const reducer = (state = initialState , action) => {
 }
 const fetchUsers = () => {
     return function(dispatch){
-        dispatch(fetchUsersRequest)
+        dispatch(fetchUsersRequest())
         axios.get('https://jsonplaceholder.typicode.com/users')
         .then(response => {
             // response.data is the array of users
