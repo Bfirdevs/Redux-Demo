@@ -1,8 +1,10 @@
 import {createStore, applyMiddleware} from 'redux'
 import rootReducer from './rootReducers'
 import logger from 'redux-logger'
-
-const store = createStore(rootReducer,applyMiddleware(logger) )
+import { composeWithDevTools } from 'redux-devtools-extension'
+const store = createStore(rootReducer, composeWithDevTools(
+    applyMiddleware(logger)
+))
 
 
 
